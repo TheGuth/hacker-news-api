@@ -13,12 +13,12 @@ app.use(bodyParser.json());
 const {Story} = require('./models.js');
 const {seedStoryData} = require('./utility.js');
 
-// seedStoryData();
+seedStoryData();
 
 app.get('/stories', (req, res) => {
   Story
     .find()
-    .sort({votes: 1})
+    .sort({votes: -1})
     .limit(20)
     // add query to find top 20 stories by votes.
     .exec()
@@ -28,6 +28,7 @@ app.get('/stories', (req, res) => {
     })
 
 });
+
 
 app.post('/stories', (req, res) => {
   const requiredFields = ['title', 'url'];
@@ -57,7 +58,7 @@ app.post('/stories', (req, res) => {
 
 app.put('/stories/:id', (req, res) => {
   Story
-    .findByIdAndUpdate(req.params.id,{$inc: {votes: -1}})
+    .findByIdAndUpdate(req.params.id,{$inc: {votes: 1}})
     .exec()
     .then(item => {
 

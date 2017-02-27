@@ -7,12 +7,19 @@ const should = chai.should();
 
 const {app, runServer, closeServer} = require('../server');
 const {Story} = require('../models');
-const {seedStoryData} = require('../utility.js');
+const {seedStoryData} = require('../utility');
 
 
 
 chai.use(chaiHttp);
 
+function createStory() {
+  return {
+      title: faker.lorem.sentence(),
+      url: faker.internet.domainName(),
+      votes: faker.random.number()
+    }
+}
 
 function tearDownDb() {
   console.info('Deleting database');
