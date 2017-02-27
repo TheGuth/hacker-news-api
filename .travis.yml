@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: KewWLjZs5O2cWMhZizLfrEYNW9N0d90J/QY9o/HIFhjbbMWlEwKCP5yt1g6XlOdqHxhijYf5xFQ63Q9WXZyG+o0JixNuA9FJzVUlKtZjbXF5lIjZGLZA5yfHgEX9pwelbYCK48T3qH3qKbnCZM654EM4PepWm5Vrw9nDSm+SYb9jKlxn3zBM19vcu2bfAtb/izpViDMjVhKOWK+Ku3S0jON7g+Y7uS0ZUghxMi3Kk2Yt+V+xBkqdloN+d2b/JPL4ENGrDgGGTb86p8pgJtvk1SWDZ33LnjhtPEaHD1u5qfm4wPANMEDZ7sCODhrdHq9IjDLRC2qN8SMF+mhGIr/BoUWEl370EAlWzitSLQZLmw0LKawJ4WcQD5HAo7mhMFGY+hEUN36N8OxuuCTk+xSWURHzg/L1g3tFn6bRaFCoGdC6oIF277VRZZ3MIwkJK9wGhS+din5wTomO0hHZMg6yvX2Kq5ymgsVWh0zxIH0dfCG87dYgDgDD8toskkvBJh8QiEtnh+ShgZnrlwc321ueEB1WR6OiJ686dkEIwjspSvg5cs+mjnXOfmLZcRNwPi3iJ3FQ6dHyCYyFatk6xfm7qqPK6dDiTdGgJEs5C8rFt2ggYO+ukfEe96HqpydPVc9Zv4a2lIVfFxX8Beet7NPeNlVxqxkC87ZQZf/8WbwstQ0=
+  app: aqueous-shore-83029
+  on:
+    repo: TheGuth/hacker-news-api
