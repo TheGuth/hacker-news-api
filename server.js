@@ -21,7 +21,6 @@ app.get('/stories', (req, res) => {
     // add query to find top 20 stories by votes.
     .exec()
     .then(response => {
-      console.log(response);
       const storiesJson = response.map(story => story.apiRepr());
       res.json({storiesJson});
     })
@@ -45,12 +44,24 @@ app.post('/stories', (req, res) => {
 
     })
     .then(response => {
+      res.location('back');
       res.status(201).json(response.apiRepr());
     })
     .catch(err => {
       console.error(err);
       res.status(500).json({message: `Internal Server Error`});
     })
+});
+
+app.put('/stories/:id', (req, res) => {
+  Story
+    .findByIdAndUpdate(req.params.id,{$inc: {votes: 1}})
+    .exec()
+    .then(item => {
+
+      res.sendStatus(204);
+    })
+    .catch(err => console.error(err))
 });
 
 
