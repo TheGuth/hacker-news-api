@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const faker = require('faker');
+const faker = require('faker');
 
 mongoose.Promise = global.Promise;
 
@@ -11,25 +11,10 @@ const app = express();
 app.use(bodyParser.json());
 
 const {Story} = require('./models.js');
+const {seedStoryData} = require('./utility.js');
 
-//
-// function seedStoryData() {
-//   let seedData = [];
-//   for (let i = 0; i <= 30; i++) {
-//     seedData.push(createStory());
-//   }
-//   Story
-//     .insertMany(seedData)
-// }
-//
-// function createStory() {
-//   return {
-//       title: faker.lorem.sentence(),
-//       url: faker.internet.domainName(),
-//       votes: faker.random.number()
-//     }
-// }
 // seedStoryData();
+
 app.get('/stories', (req, res) => {
   Story
     .find()

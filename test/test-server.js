@@ -7,25 +7,12 @@ const should = chai.should();
 
 const {app, runServer, closeServer} = require('../server');
 const {Story} = require('../models');
+const {seedStoryData} = require('../utility.js');
+
+
 
 chai.use(chaiHttp);
 
-function seedStoryData() {
-  let seedData = [];
-  for (let i = 0; i <= 30; i++) {
-    seedData.push(createStory());
-  }
-  Story
-    .insertMany(seedData)
-}
-
-function createStory() {
-  return {
-      title: faker.lorem.sentence(),
-      url: faker.internet.domainName(),
-      votes: faker.random.number()
-    }
-}
 
 function tearDownDb() {
   console.info('Deleting database');
