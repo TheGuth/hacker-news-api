@@ -1,0 +1,22 @@
+{
+  "name": "hacker_news_api",
+  "version": "1.0.0",
+  "description": "Awesome app on hacker news",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "James and Aaron",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^3.2.0"
+  }
+}
