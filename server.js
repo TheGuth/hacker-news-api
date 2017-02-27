@@ -57,7 +57,7 @@ app.post('/stories', (req, res) => {
 
 app.put('/stories/:id', (req, res) => {
   Story
-    .findByIdAndUpdate(req.params.id,{$inc: {votes: 1}})
+    .findByIdAndUpdate(req.params.id,{$inc: {votes: -1}})
     .exec()
     .then(item => {
 
