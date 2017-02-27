@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const faker = require('faker');
 
 mongoose.Promise = global.Promise;
 
@@ -15,10 +16,15 @@ const {Story} = require('./models.js');
 app.get('/stories', (req, res) => {
   Story
     .find()
+    .sort({votes: 1})
     .limit(20)
     // add query to find top 20 stories by votes.
     .exec()
-    .then()
+    .then(response => {
+      console.log(response);
+      const storiesJson = response.map(story => story.apiRepr());
+      res.json({storiesJson});
+    })
 
 });
 
@@ -46,6 +52,7 @@ app.post('/stories', (req, res) => {
       res.status(500).json({message: `Internal Server Error`});
     })
 });
+
 
 // API endpoints go here
 
