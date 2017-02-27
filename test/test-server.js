@@ -97,6 +97,31 @@ describe('Hacker News API', function() {
         });
     });
   });
+  describe('PUT endpoint', function() {
+    it('should increment the vote count by only 1', function() {
+      let putStory;
+        return chai.request(app)
+          .get('/stories')
+          .then(res => {
+            putStory = res.body.storiesJson[0];
+            console.log(putStory.id);
+            return chai.request(app)
+              .put(`/stories/${putStory.id}`)
+
+          })
+          .then( item => {
+            console.log('item: ', item);
+            item.should.have.status(204);
+
+            return Story.findById(putStory.id)
+          })
+          .then(response => {
+            response.votes.should.equal(putStory.votes + 1);
+          });
+
+      });
+    });
+
 
 
 });
