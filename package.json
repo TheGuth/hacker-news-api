@@ -4,7 +4,8 @@
   "description": "Awesome app on hacker news",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "seed": "node ./seed.js"
   },
   "author": "James and Aaron",
   "license": "MIT",

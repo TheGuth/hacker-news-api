@@ -11,9 +11,9 @@ const app = express();
 app.use(bodyParser.json());
 
 const {Story} = require('./models.js');
-const {seedStoryData} = require('./utility.js');
 
-seedStoryData();
+
+
 
 app.get('/stories', (req, res) => {
   Story
